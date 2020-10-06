@@ -29,10 +29,6 @@ namespace Projekt_CSharp
 
         }
 
-        public static double Parse(string word)
-        {
-            return 0;
-        }
 
         static double ConvertStringToDigit(string word)
         {
