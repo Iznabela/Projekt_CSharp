@@ -11,7 +11,6 @@ namespace XUnitTestProject1
         public void Additions()
         {
             Assert.Equal(2, Conversion.Parse("one plus one"));
-
         }
     }
 }
