@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Projekt_CSharp
 {
-    class Conversion
+    public static class Conversion
     {
         public static double Parse(string word)
         {
-            return 0;
+            double result = 0;
+            return result;
         }
     }
 }

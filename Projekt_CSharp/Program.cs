@@ -6,12 +6,9 @@ namespace Projekt_CSharp
     {
         static void Main(string[] args)
         {
-            
-
             Console.WriteLine("Write some math operation to translate (OBS : Avoid Digits! Just Text Please! ");
             string firstinput = Console.ReadLine();
             string[] words = firstinput.Split(' ');
-
 
 
 
