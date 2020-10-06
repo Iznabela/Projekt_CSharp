@@ -6,7 +6,7 @@ namespace Projekt_CSharp
     {
         static void Main(string[] args)
         {
-
+            
 
             Console.WriteLine("Write some math operation to translate (OBS : Avoid Digits! Just Text Please! ");
             string firstinput = Console.ReadLine();
@@ -28,9 +28,15 @@ namespace Projekt_CSharp
 
 
         }
-        static double ConvertStringToDigit(string i)
+
+        public static double Parse(string word)
         {
-            switch (i)
+            return 0;
+        }
+
+        static double ConvertStringToDigit(string word)
+        {
+            switch (word)
             {
                 case "Zero": return 0;
                 case "One": return 1;
