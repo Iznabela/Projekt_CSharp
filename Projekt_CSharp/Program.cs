@@ -43,7 +43,7 @@ namespace Projekt_CSharp
                 case "nine": return 9;
                 case "ten": return 10;
                 default:
-                    throw new IndexOutOfRangeException(String.Format("{0} not a digit", word));
+                    throw new IndexOutOfRangeException(String.Format("{0} not a string", word));
 
 
             }
