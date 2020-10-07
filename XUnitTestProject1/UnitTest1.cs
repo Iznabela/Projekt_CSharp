@@ -32,12 +32,12 @@ namespace XUnitTestProject1
         [Fact]
         public void Multiplication()
         {
-            Assert.Equal(4, Conversion.Parse("two multiplied by two"));
-            Assert.Equal(6, Conversion.Parse("two multiplied by three"));
-            Assert.Equal(10, Conversion.Parse("five multiplied by two"));
-            Assert.Equal(12, Conversion.Parse("three multiplied by four"));
-            Assert.Throws<FormatException>(() => Conversion.Parse("three multiplied by "));
-            Assert.Throws<FormatException>(() => Conversion.Parse("multiplied by three"));
+            Assert.Equal(4, Conversion.Parse("two times two"));
+            Assert.Equal(6, Conversion.Parse("two times three"));
+            Assert.Equal(10, Conversion.Parse("five times two"));
+            Assert.Equal(12, Conversion.Parse("three times four"));
+            Assert.Throws<FormatException>(() => Conversion.Parse("three times "));
+            Assert.Throws<FormatException>(() => Conversion.Parse("times three"));
         }
         [Fact]
         public void Division()
