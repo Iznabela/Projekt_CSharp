@@ -13,22 +13,24 @@ namespace Projekt_CSharp
 
 
 
+
+
+
             foreach (var word in words)
             {
                 double number = ConvertStringToDigit(word);
-                Console.WriteLine(number);
-
+                char operate = ConvertStringToChar(word);
+                Console.WriteLine($"{number + operate} ");
 
             }
-
-
-
-
         }
+
+
 
 
         static double ConvertStringToDigit(string word)
         {
+
             switch (word)
             {
                 case "zero": return 0;
@@ -42,8 +44,26 @@ namespace Projekt_CSharp
                 case "eight": return 8;
                 case "nine": return 9;
                 case "ten": return 10;
+                default: return 0;
+
+
+
+
+            }
+
+        }
+        static char ConvertStringToChar(string operat)
+        {
+            switch (operat)
+            {
+                case "plus": return '+';
+                case "minus": return '-';
+                case "multipy by": return '*';
+                case "divided by": return '/';
                 default:
-                    throw new IndexOutOfRangeException(String.Format("{0} not a string", word));
+                    return '#';
+
+
 
 
             }
