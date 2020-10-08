@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Projekt_CSharp
 {
-    public static class Conversion
+    public class Conversion
     {
-        public static double Parse(string userInput)
+        public double Parse(string userInput)
         {
             double result = 0;
 
@@ -14,46 +15,49 @@ namespace Projekt_CSharp
 
             // TEMPORARY
             // list and char to save the converted values and operators in (we will change this later to value and operator Objects)
-            List<double> values = new List<double> { };
-            char op = '?';
+            List<Value> values = new List<Value> { };
+            List<Func> functions = new List<Func> { };
+
 
             foreach (var word in words)
             {
                 if (isDigit(word))
                 {
-                    values.Add(ConvertStringToDigit(word));
+                    double number = ConvertStringToDigit(word);
+                    values.Add(new Value(number));
                 }
                 else if (isOperator(word))
                 {
-                    op = ConvertStringToChar(word);
+                    char function = ConvertStringToChar(word);
+                    functions.Add(new Func(function));
                 }
             }
 
             // checking what operator user entered
-            switch (op)
+            switch (functions[0].GetChar())
             {
                 case '+':
-                    result = values[0] + values[1];
+                    result = values[0].GetValue() + values[1].GetValue();
                     break;
                 case '-':
-                    result = values[0] - values[1];
+                    result = values[0].GetValue() - values[1].GetValue();
                     break;
                 case '*':
-                    result = values[0] * values[1];
+                    result = values[0].GetValue() * values[1].GetValue();
                     break;
                 case '/':
-                    result = values[0] / values[1];
+                    result = values[0].GetValue() / values[1].GetValue();
                     break;
             }
             
             // printing the calculation and the result
-            Console.Write($"{values[0]} {op} {values[1]} = {result}");
+            Console.Write($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
 
             return result;
         }
 
         // checking if a word is digit
-        public static bool isDigit(string word)
+        public bool isDigit(string word)
         {
             switch (word)
             {
@@ -75,7 +79,7 @@ namespace Projekt_CSharp
         }
 
         // checking if a word is operator
-        public static bool isOperator(string word)
+        public bool isOperator(string word)
         {
             switch (word)
             {
@@ -89,7 +93,7 @@ namespace Projekt_CSharp
             }
         }
 
-        public static double ConvertStringToDigit(string word)
+        public double ConvertStringToDigit(string word)
         {
             switch (word)
             {
@@ -108,7 +112,7 @@ namespace Projekt_CSharp
             }
         }
 
-        public static char ConvertStringToChar(string operat)
+        public char ConvertStringToChar(string operat)
         {
             switch (operat)
             {
@@ -117,7 +121,7 @@ namespace Projekt_CSharp
                 case "times": return '*';
                 case "divided": return '/';
                 default:
-                    return '#';
+                    return '0';
             }
         }
     }
