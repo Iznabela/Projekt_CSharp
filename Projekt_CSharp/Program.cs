@@ -12,7 +12,7 @@ namespace Projekt_CSharp
             Console.WriteLine("Write a math operation to translate (OBS : Avoid Digits! Just Text Please! ");
             string firstinput = Console.ReadLine();
 
-            // parsing the user input
+            // trying to parse user input
             try
             {
                 conversion.Parse(firstinput);

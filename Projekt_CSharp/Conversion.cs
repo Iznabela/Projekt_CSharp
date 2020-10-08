@@ -13,8 +13,7 @@ namespace Projekt_CSharp
 
             string[] words = userInput.Split(' ');
 
-            // TEMPORARY
-            // list and char to save the converted values and operators in (we will change this later to value and operator Objects)
+            // lists of value and func-objects
             List<Value> values = new List<Value> { };
             List<Func> functions = new List<Func> { };
 
