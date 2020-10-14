@@ -27,12 +27,12 @@ namespace Projekt_CSharp
             // converting words to digits/chars and adding the objects to lists
             foreach (var word in words)
             {
-                if (isDigit(word))
+                if (IsDigit(word))
                 {
                     double number = ConvertStringToDigit(word);
                     values.Add(new Value(number));
                 }
-                else if (isOperator(word))
+                else if (IsOperator(word))
                 {
                     char function = ConvertStringToChar(word);
                     functions.Add(new Func(function));
@@ -88,7 +88,7 @@ namespace Projekt_CSharp
             return result;
         }
 
-        double Calculate(double a, char op, double b) 
+        private double Calculate(double a, char op, double b) 
         { 
             switch (op) 
             { 
@@ -105,7 +105,7 @@ namespace Projekt_CSharp
         }
 
         // checking if a word is digit 
-        public bool isDigit(string word)
+        public bool IsDigit(string word)
         {
             switch (word)
             {
@@ -127,7 +127,7 @@ namespace Projekt_CSharp
         }
 
         // checking if a word is operator 
-        public bool isOperator(string word)
+        public bool IsOperator(string word)
         {
             switch (word)
             {
