@@ -36,22 +36,22 @@ namespace Projekt_CSharp
 
             //// Do multiple operations 
 
-            //double left = OpEval(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue()); 
-            //result = left; 
-            //Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()}  {values[1].GetValue()}  = {result}"); 
+            double right = 0;
+            double resultat = 0;
+            double left = OpEval(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue()); 
+            result = left; 
+            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()}  {values[1].GetValue()}  = {result}"); 
 
-            //for (int i = 2; i < words.Length; i++) 
-            //{ 
-            //    double right = values[i].GetValue(); 
+            for (int i = 1; i < functions.Count; i++) 
+            { 
+                right = values[i + 1].GetValue(); 
 
-            //    double resultat = OpEval(left, functions[i - 1].GetChar(), right); 
+                resultat = OpEval(left, functions[i].GetChar(), right);                
 
+            }
+            result = resultat;
 
-            //    result = resultat; 
-
-            //    Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[i - 1].GetChar()} {right} = {result}"); 
-
-            //} 
+            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {right} = {result}");
 
 
 
@@ -85,24 +85,24 @@ namespace Projekt_CSharp
 
 
 
-        //double OpEval(double a, char op, double b) 
-        //{ 
-        //    switch (op) 
-        //    { 
+        double OpEval(double a, char op, double b) 
+        { 
+            switch (op) 
+            { 
 
-        //        case '*': 
-        //            return a * b; 
-        //        case '/': 
-        //            return a / b; 
-        //        case '+': 
-        //            return a + b; 
-        //        case '-': 
-        //              return a - b; 
+                case '*': 
+                    return a * b; 
+                case '/': 
+                    return a / b; 
+                case '+': 
+                    return a + b; 
+                case '-': 
+                      return a - b; 
 
-        //        default: throw new Exception(); 
+                default: throw new Exception(); 
 
-        //    } 
-        //} 
+            } 
+        } 
 
         // checking if a word is digit 
         public bool isDigit(string word)

@@ -53,15 +53,15 @@ namespace XUnitTestProject1
         }
 
 
-        //[Fact] 
-        //public void MultiOperation() 
-        //{ 
-        //    Assert.Equal(6, conversion.Parse("two plus one plus three")); 
-        //    Assert.Equal(6, conversion.Parse("two times one plus four ")); 
-        //    Assert.Equal(5, conversion.Parse("five times two minus five")); 
-        //    Assert.Equal(11, conversion.Parse("nine devided by three plus eight ")); 
-        //    Assert.Throws<FormatException>(() => conversion.Parse("1 + 1 / 2")); 
-        //    Assert.Throws<FormatException>(() => conversion.Parse("5 - 2 * 4")); 
-        //} 
+        [Fact] 
+        public void MultiOperation() 
+        { 
+            Assert.Equal(6, conversion.Parse("two plus one plus three")); 
+            Assert.Equal(6, conversion.Parse("two times one plus four ")); 
+            Assert.Equal(5, conversion.Parse("five times two minus five")); 
+            Assert.Equal(11, conversion.Parse("nine devided by three plus eight ")); 
+            Assert.Throws<FormatException>(() => conversion.Parse("1 + 1 / 2")); 
+            Assert.Throws<FormatException>(() => conversion.Parse("5 - 2 * 4")); 
+        } 
     }
 }
