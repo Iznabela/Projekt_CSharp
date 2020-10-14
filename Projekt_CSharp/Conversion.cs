@@ -43,39 +43,48 @@ namespace Projekt_CSharp
             Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()}  {values[1].GetValue()}  = {result}"); 
 
             for (int i = 1; i < functions.Count; i++) 
-            { 
-                right = values[i + 1].GetValue(); 
-
-                resultat = OpEval(left, functions[i].GetChar(), right);                
-
-            }
-            result = resultat;
-
-            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {right} = {result}");
-
-
-
-
-            // checking what operator user entered 
-            switch (functions[0].GetChar())
             {
-                case '+':
-                    result = values[0].GetValue() + values[1].GetValue();
-                    break;
-                case '-':
-                    result = values[0].GetValue() - values[1].GetValue();
-                    break;
-                case '*':
-                    result = values[0].GetValue() * values[1].GetValue();
-                    break;
-                case '/':
-                    result = values[0].GetValue() / values[1].GetValue();
-                    break;
+                if (functions[i].GetChar() == '*')
+                {
+                    double left1 = values[0].GetValue();
+                    double right1 = OpEval(values[1].GetValue(), functions[i].GetChar(), values[i + 1].GetValue());
+                    double resultat1 = OpEval(left1, functions[0].GetChar(), right1);
+                    Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {values[i + 1].GetValue()} = {resultat1}");
+                    Console.ReadKey();
+                }
+                else
+
+                right = values[i + 1].GetValue(); 
+               resultat = OpEval(left, functions[i].GetChar(), right);
+                result = resultat;
+            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {right} = {result}");
+                Console.ReadKey();
             }
+            
 
-            //// printing the calculation and the result 
 
-            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
+
+
+            //// checking what operator user entered 
+            //switch (functions[0].GetChar())
+            //{
+            //    case '+':
+            //        result = values[0].GetValue() + values[1].GetValue();
+            //        break;
+            //    case '-':
+            //        result = values[0].GetValue() - values[1].GetValue();
+            //        break;
+            //    case '*':
+            //        result = values[0].GetValue() * values[1].GetValue();
+            //        break;
+            //    case '/':
+            //        result = values[0].GetValue() / values[1].GetValue();
+            //        break;
+            //}
+
+            ////// printing the calculation and the result 
+
+            //Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
 
 
 
