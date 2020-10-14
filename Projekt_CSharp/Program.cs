@@ -9,18 +9,18 @@ namespace Projekt_CSharp
         {
             Conversion conversion = new Conversion();
 
-            Console.WriteLine("Write a math operation to translate (OBS : Avoid Digits! Just Text Please! ");
-            string firstinput = Console.ReadLine();
+            Console.WriteLine("Write a math operation with up to 3 operators and 5 values - between one and ten!");
+            Console.WriteLine("(OBS : Avoid Digits! Only Text Please!");
+            Console.WriteLine();
+            string userInput = Console.ReadLine();
 
-            // trying to parse user input
             try
             {
-                conversion.Parse(firstinput);
+                conversion.Parse(userInput);
             }
-            catch (Exception e)
+            catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine(e.Message);
-                //throw new Exception("ERROR", e);
+                throw new ArgumentOutOfRangeException();
             }           
         }       
     }

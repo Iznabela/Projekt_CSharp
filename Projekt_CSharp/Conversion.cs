@@ -1,6 +1,9 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Projekt_CSharp
@@ -10,14 +13,18 @@ namespace Projekt_CSharp
         public double Parse(string userInput)
         {
             double result = 0;
+            double left;
+            double right;
+            int amountOfFunc = 0;
 
+            // splitting the sentence to separate words - added to array
             string[] words = userInput.Split(' ');
 
-            // lists of value and func-objects 
+            // creating empty object-lists
             List<Value> values = new List<Value> { };
             List<Func> functions = new List<Func> { };
 
-
+            // converting words to digits/chars and adding the objects to lists
             foreach (var word in words)
             {
                 if (isDigit(word))
@@ -29,76 +36,62 @@ namespace Projekt_CSharp
                 {
                     char function = ConvertStringToChar(word);
                     functions.Add(new Func(function));
+                    amountOfFunc++;
                 }
             }
 
-
-
-            //// Do multiple operations 
-
-            double right = 0;
-            double resultat = 0;
-            double left = OpEval(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue()); 
-            result = left; 
-            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()}  {values[1].GetValue()}  = {result}"); 
-
-            for (int i = 1; i < functions.Count; i++) 
+            // calculating in different ways depending on amount of operators
+            if (amountOfFunc == 1)
             {
-                if (functions[i].GetChar() == '*')
+                result = Calculate(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue());
+            }
+            else if (amountOfFunc == 2)
+            {
+                if (functions[1].GetChar() == '*')
                 {
-                    double left1 = values[0].GetValue();
-                    double right1 = OpEval(values[1].GetValue(), functions[i].GetChar(), values[i + 1].GetValue());
-                    double resultat1 = OpEval(left1, functions[0].GetChar(), right1);
-                    Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {values[i + 1].GetValue()} = {resultat1}");
-                    Console.ReadKey();
+                    left = Calculate(values[1].GetValue(), '*', values[2].GetValue());
+                    right = values[0].GetValue();
+
+                    result = Calculate(left, functions[0].GetChar(), right);
                 }
                 else
+                {
+                    left = Calculate(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue());
+                    right = values[2].GetValue();
 
-                right = values[i + 1].GetValue(); 
-               resultat = OpEval(left, functions[i].GetChar(), right);
-                result = resultat;
-            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[1].GetChar()} {right} = {result}");
-                Console.ReadKey();
+                    result = Calculate(left, functions[1].GetChar(), right);
+                }
             }
+            else if (amountOfFunc == 3)
+            {
+                left = Calculate(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue());
+                right = Calculate(values[2].GetValue(), functions[2].GetChar(), values[3].GetValue());
+
+                result = Calculate(left, functions[1].GetChar(), right);
+            }
+            else
+            {
+                Console.WriteLine("ERROR! Too many values/operators... Press any key to quit...");
+                Console.ReadLine();
+                Environment.Exit(0);
+            }
+
+            // printing the calculation and result
+            Console.Write($"RESULT >> {values[0].GetValue()} ");
+            for (int i = 0; i < functions.Count; i++)
+            {
+                Console.Write($"{functions[i].GetChar()} ");
+                Console.Write($"{values[i + 1].GetValue()} ");
+            }
+            Console.WriteLine($"= {result}");
             
-
-
-
-
-            //// checking what operator user entered 
-            //switch (functions[0].GetChar())
-            //{
-            //    case '+':
-            //        result = values[0].GetValue() + values[1].GetValue();
-            //        break;
-            //    case '-':
-            //        result = values[0].GetValue() - values[1].GetValue();
-            //        break;
-            //    case '*':
-            //        result = values[0].GetValue() * values[1].GetValue();
-            //        break;
-            //    case '/':
-            //        result = values[0].GetValue() / values[1].GetValue();
-            //        break;
-            //}
-
-            ////// printing the calculation and the result 
-
-            //Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
-
-
-
-
             return result;
         }
 
-
-
-        double OpEval(double a, char op, double b) 
+        double Calculate(double a, char op, double b) 
         { 
             switch (op) 
             { 
-
                 case '*': 
                     return a * b; 
                 case '/': 
@@ -107,11 +100,9 @@ namespace Projekt_CSharp
                     return a + b; 
                 case '-': 
                       return a - b; 
-
                 default: throw new Exception(); 
-
             } 
-        } 
+        }
 
         // checking if a word is digit 
         public bool isDigit(string word)
