@@ -13,7 +13,7 @@ namespace Projekt_CSharp
 
             string[] words = userInput.Split(' ');
 
-            // lists of value and func-objects
+            // lists of value and func-objects 
             List<Value> values = new List<Value> { };
             List<Func> functions = new List<Func> { };
 
@@ -32,7 +32,31 @@ namespace Projekt_CSharp
                 }
             }
 
-            // checking what operator user entered
+
+
+            //// Do multiple operations 
+
+            //double left = OpEval(values[0].GetValue(), functions[0].GetChar(), values[1].GetValue()); 
+            //result = left; 
+            //Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()}  {values[1].GetValue()}  = {result}"); 
+
+            //for (int i = 2; i < words.Length; i++) 
+            //{ 
+            //    double right = values[i].GetValue(); 
+
+            //    double resultat = OpEval(left, functions[i - 1].GetChar(), right); 
+
+
+            //    result = resultat; 
+
+            //    Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} {functions[i - 1].GetChar()} {right} = {result}"); 
+
+            //} 
+
+
+
+
+            // checking what operator user entered 
             switch (functions[0].GetChar())
             {
                 case '+':
@@ -48,14 +72,39 @@ namespace Projekt_CSharp
                     result = values[0].GetValue() / values[1].GetValue();
                     break;
             }
-            
-            // printing the calculation and the result
-            Console.Write($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
+
+            //// printing the calculation and the result 
+
+            Console.WriteLine($"{values[0].GetValue()} {functions[0].GetChar()} {values[1].GetValue()} = {result}");
+
+
+
 
             return result;
         }
 
-        // checking if a word is digit
+
+
+        //double OpEval(double a, char op, double b) 
+        //{ 
+        //    switch (op) 
+        //    { 
+
+        //        case '*': 
+        //            return a * b; 
+        //        case '/': 
+        //            return a / b; 
+        //        case '+': 
+        //            return a + b; 
+        //        case '-': 
+        //              return a - b; 
+
+        //        default: throw new Exception(); 
+
+        //    } 
+        //} 
+
+        // checking if a word is digit 
         public bool isDigit(string word)
         {
             switch (word)
@@ -77,7 +126,7 @@ namespace Projekt_CSharp
             }
         }
 
-        // checking if a word is operator
+        // checking if a word is operator 
         public bool isOperator(string word)
         {
             switch (word)

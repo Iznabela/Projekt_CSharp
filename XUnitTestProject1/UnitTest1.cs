@@ -27,8 +27,8 @@ namespace XUnitTestProject1
             Assert.Equal(-1, conversion.Parse("one minus two"));
             Assert.Equal(5, conversion.Parse("six minus one"));
             Assert.Equal(2, conversion.Parse("eight minus six"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("minus five"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("nine minus"));
+            //Assert.Throws<FormatException>(() => conversion.Parse("minus five")); 
+            //Assert.Throws<FormatException>(() => conversion.Parse("nine minus")); 
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace XUnitTestProject1
             Assert.Equal(6, conversion.Parse("two times three"));
             Assert.Equal(10, conversion.Parse("five times two"));
             Assert.Equal(12, conversion.Parse("three times four"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("1 + 1"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("5 - 2"));
+            //Assert.Throws<FormatException>(() => conversion.Parse("1 + 1")); 
+            //Assert.Throws<FormatException>(() => conversion.Parse("5 - 2")); 
         }
         [Fact]
         public void Division()
@@ -48,8 +48,20 @@ namespace XUnitTestProject1
             Assert.Equal(1.5, conversion.Parse("three divided by two"));
             Assert.Equal(2, conversion.Parse("ten divided by five"));
             Assert.Equal(3, conversion.Parse("nine divided by three"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("one divided by"));
-            //Assert.Throws<FormatException>(() => conversion.Parse("divided by two"));
+            //Assert.Throws<FormatException>(() => conversion.Parse("one divided by")); 
+            //Assert.Throws<FormatException>(() => conversion.Parse("divided by two")); 
         }
+
+
+        //[Fact] 
+        //public void MultiOperation() 
+        //{ 
+        //    Assert.Equal(6, conversion.Parse("two plus one plus three")); 
+        //    Assert.Equal(6, conversion.Parse("two times one plus four ")); 
+        //    Assert.Equal(5, conversion.Parse("five times two minus five")); 
+        //    Assert.Equal(11, conversion.Parse("nine devided by three plus eight ")); 
+        //    Assert.Throws<FormatException>(() => conversion.Parse("1 + 1 / 2")); 
+        //    Assert.Throws<FormatException>(() => conversion.Parse("5 - 2 * 4")); 
+        //} 
     }
 }
