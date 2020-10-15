@@ -10,6 +10,10 @@ namespace Projekt_CSharp
 {
     public class Conversion
     {
+        private string[] words;
+        private List<Value> values;
+        private List<Func> functions;
+
         public double Parse(string userInput)
         {
             double result = 0;
@@ -17,12 +21,14 @@ namespace Projekt_CSharp
             double right;
             int amountOfFunc = 0;
 
-            // splitting the sentence to separate words - added to array
-            string[] words = userInput.Split(' ');
-
             // creating empty object-lists
-            List<Value> values = new List<Value> { };
-            List<Func> functions = new List<Func> { };
+            values = new List<Value> { };
+            functions = new List<Func> { };
+
+            // splitting the sentence to separate words - added to array
+            words = userInput.Split(' ');
+
+           
 
             // converting words to digits/chars and adding the objects to lists
             foreach (var word in words)
