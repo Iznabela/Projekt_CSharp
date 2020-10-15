@@ -1,0 +1,39 @@
+Debugging:
+-----------------------
+Jag upptäckte att min uträkning visade fel resultat så satte därför en breakpoint 
+vid en for-loop som loopar igenom operatorer, för att göra en uträkning
+med de values användaren skrivit in. Upptäckte då när jag debuggade programmet 
+att när jag skulle få tag i en value så hade jag satt fel index. För att få rätt
+index skulle jag ha skrivit values[i + 1] istället för values[i].
+
+
+Analys:
+------------------------
+Vi valde att göra en lista av value-objekt och en lista för operator-objekt, vilket
+jag tycker var ett tydligt sätt att förvara objekten på och kunna få tag i dessa. 
+På så sätt gjorde vi oss också av med onödiga ord som inte skulle användas som "by" 
+i "divided by".
+- Om vi skulle använda oss av alla ord i vår word-array och lagt i en gemensam lista
+hade vi sen istället behövt göra t.ex. En for-loop med en IF sats inuti för att 
+ta bort det ordet från listan.
+
+Vi gjorde först tester för att testa så att uträkningarna blev rätt om användaren skrev in 
+2 values och 1 operator, och dessutom för att testa att programmet skickar rätt felmeddelande
+när något inte går att parsa. När vi hade kodat så att dessa tester blev godkända så gjorde vi
+ett till test som testar längre uträkningar där användaren skriver in fler values och
+operatorer. Sedan utvecklade vi vårt program så att även de tester blev godkända.
+Detta tyckte jag var ett bra sätt att förstå bättre varför tester används, då vi märkte att
+när det blev mer komplicerade uträkningar var det ett enkelt sätt att kolla om programmet 
+fungerade som det skulle.
+
+Jag tycker att vi hade bra lösningar i projektet genom metoder för att t.ex. kunna 
+"kolla" om ett ord var en siffra eller en operator, och sedan kunna konvertera dessa för att 
+enkelt kunna göra uträkningar. Jag tycker också att det var en bra idé att ha en "counter"-
+variabel för hur många operatorer användaren skrivit in för att sedan kunna utföra 
+uträkningen på olika sätt beroende på hur lång uträkningen är.
+
+Det som skulle kunna förbättras med programmet tror jag är att förenkla/förkorta koden och
+kanske ha någon loop så att användaren kan skriva in hur mycket som helst, och med mer 
+komplicerade uträkningar, samt kanske ändra till ännu tydligare lättlästa namn på
+fält/metoder.
+
