@@ -111,7 +111,7 @@ namespace Projekt_CSharp
         }
 
         // checking if a word is digit 
-        public bool IsDigit(string word)
+        private bool IsDigit(string word)
         {
             switch (word)
             {
@@ -133,7 +133,7 @@ namespace Projekt_CSharp
         }
 
         // checking if a word is operator 
-        public bool IsOperator(string word)
+        private bool IsOperator(string word)
         {
             switch (word)
             {
@@ -147,7 +147,7 @@ namespace Projekt_CSharp
             }
         }
 
-        public double ConvertStringToDigit(string word)
+        private double ConvertStringToDigit(string word)
         {
             switch (word)
             {
@@ -166,7 +166,7 @@ namespace Projekt_CSharp
             }
         }
 
-        public char ConvertStringToChar(string operat)
+        private char ConvertStringToChar(string operat)
         {
             switch (operat)
             {

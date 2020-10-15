@@ -60,9 +60,7 @@ namespace XUnitTestProject1
             Assert.Equal(5, conversion.Parse("five times two minus five")); 
             Assert.Equal(11, conversion.Parse("nine divided by three plus eight"));
             Assert.Equal(-3, conversion.Parse("one plus two minus three times two"));
-            Assert.Equal(5, conversion.Parse("ten plus ten divided by two times two"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("one plus one times nine minus"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("three divided by eight minus seven plus one minus"));
+            Assert.Equal(5, conversion.Parse("ten plus ten divided by two times two"));           
         } 
     }
 }
