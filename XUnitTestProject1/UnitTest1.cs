@@ -16,8 +16,8 @@ namespace XUnitTestProject1
             Assert.Equal(5, conversion.Parse("two plus three"));
             Assert.Equal(10, conversion.Parse("five plus five"));
             Assert.Equal(4, conversion.Parse("three plus one"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("1 + 1"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("2 + 3"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("plus one"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("three plus"));
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace XUnitTestProject1
             Assert.Equal(6, conversion.Parse("two times three"));
             Assert.Equal(10, conversion.Parse("five times two"));
             Assert.Equal(12, conversion.Parse("three times four"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("1 * 1"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("5 * 2")); 
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("one times"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("times nine")); 
         }
         [Fact]
         public void Division()
@@ -52,18 +52,17 @@ namespace XUnitTestProject1
             Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("divided by two")); 
         }
 
-
         [Fact] 
         public void MultiOperation() 
         { 
             Assert.Equal(6, conversion.Parse("two plus one plus three")); 
             Assert.Equal(6, conversion.Parse("two times one plus four ")); 
             Assert.Equal(5, conversion.Parse("five times two minus five")); 
-            Assert.Equal(11, conversion.Parse("nine divided by three plus eight "));
+            Assert.Equal(11, conversion.Parse("nine divided by three plus eight"));
             Assert.Equal(-3, conversion.Parse("one plus two minus three times two"));
             Assert.Equal(5, conversion.Parse("ten plus ten divided by two times two"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("1 + 1 / 2"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("5 - 2 * 4 + 10"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("one plus one times nine minus"));
+            Assert.Throws<ArgumentOutOfRangeException>(() => conversion.Parse("three divided by eight minus seven plus one minus"));
         } 
     }
 }
